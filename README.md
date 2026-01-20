@@ -1,7 +1,3 @@
-# Cloud-Agnostic DevOps Dashboard
-
-This project provides a real-time deployment tracking dashboard that works across multiple cloud platforms (AWS, Azure, GCP, etc.). It uses Node.js for the backend and React for the frontend
-
 # ☁️ Cloud-Agnostic DevOps Dashboard
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
@@ -37,6 +33,7 @@ In a multi-cloud strategy, engineers face **"Console Fatigue."** Checking deploy
 │   ├── routes/          # API Endpoints (e.g., /api/deployments)
 │   └── index.js         # Entry point
 └── docker-compose.yml   # Docker setup for local development
+
 🛠️ Getting Started
 1. Prerequisites
 Node.js (v18 or higher)
