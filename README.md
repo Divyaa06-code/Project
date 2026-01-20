@@ -1,85 +1,87 @@
 # Cloud-Agnostic DevOps Dashboard
 
-This project provides a real-time deployment tracking dashboard that works across multiple cloud platforms (AWS, Azure, GCP, etc.). It uses Node.js for the backend and React for the frontend.
-☁️ Cloud-Agnostic DevOps Dashboard
-A centralized, real-time monitoring and deployment tracking platform designed to provide a "single pane of glass" view across multiple cloud ecosystems (AWS, Azure, and Google Cloud Platform).
+This project provides a real-time deployment tracking dashboard that works across multiple cloud platforms (AWS, Azure, GCP, etc.). It uses Node.js for the backend and React for the frontend
 
-🚀 Overview
-In a multi-cloud strategy, engineers often struggle with "console fatigue"—switching between different cloud portals to check deployment statuses. This dashboard abstracts those complexities, providing a unified interface to monitor CI/CD pipelines and infrastructure health regardless of the provider.
+# ☁️ Cloud-Agnostic DevOps Dashboard
 
-Key Features
-Multi-Cloud Integration: Native support for AWS, Azure, and GCP using a unified abstraction layer.
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Node.js](https://img.shields.io/badge/node.js-v18+-green.svg)
+![React](https://img.shields.io/badge/react-18.x-blue.svg)
 
-Real-Time Tracking: Live updates on deployment statuses (Success, Failed, In-Progress) using WebSockets.
+A centralized, real-time deployment tracking and infrastructure monitoring platform. This dashboard provides a "single pane of glass" view for DevOps teams operating across multiple cloud environments, eliminating the need to switch between AWS, Azure, and GCP consoles.
 
-Resource Health Metrics: At-a-glance view of CPU, Memory, and Disk usage across different cloud instances.
+## 🚀 The Problem
+In a multi-cloud strategy, engineers face **"Console Fatigue."** Checking deployment statuses, health metrics, and logs requires logging into different portals with different UIs. This project abstracts those differences into one unified, cloud-neutral interface.
 
-Unified Logging: Aggregated logs from different providers into one searchable stream.
+## ✨ Key Features
+* **Multi-Cloud Integration:** Unified views for AWS (EC2/Lambda), Azure (VMs/Functions), and GCP (GCE/Cloud Run).
+* **Real-Time Deployment Tracking:** Live status updates for CI/CD pipelines.
+* **Unified Health Metrics:** High-level visualization of CPU, Memory, and Disk usage across providers.
+* **Cloud-Agnostic Design:** Easily plug in new providers (DigitalOcean, Oracle Cloud) by following our standard service interface.
+* **Secure Credential Management:** Support for Environment Variables and Secret Managers to handle Cloud SDK authentication.
 
-🏗️ Technical Architecture
-The project follows a decoupled architecture to ensure scalability and ease of adding new cloud providers.
+## 🏗️ Technical Stack
+* **Frontend:** React.js, Tailwind CSS (Styling), Recharts (Data Visualization).
+* **Backend:** Node.js, Express.js.
+* **Cloud Connectivity:** AWS SDK, Azure SDK for JS, Google Cloud Client Library.
+* **Communication:** Axios for REST APIs & WebSockets for live updates.
 
-Frontend: React.js with TailwindCSS for a responsive, modern UI and Recharts for data visualization.
+## 📂 Project Structure
+```text
+├── client/              # React frontend application
+│   ├── src/components/  # UI components (CloudCards, Sidebar, Graphs)
+│   ├── src/hooks/       # Custom hooks for fetching cloud data
+│   └── src/context/     # State management for multi-cloud data
+├── server/              # Node.js backend API
+│   ├── services/        # Abstraction layer (awsService, azureService, etc.)
+│   ├── routes/          # API Endpoints (e.g., /api/deployments)
+│   └── index.js         # Entry point
+└── docker-compose.yml   # Docker setup for local development
+🛠️ Getting Started
+1. Prerequisites
+Node.js (v18 or higher)
 
-Backend: Node.js (Express) acting as a middleware proxy to fetch and normalize data from Cloud SDKs.
+NPM or Yarn
 
-Authentication: JWT-based auth with support for Cloud IAM roles.
+Access keys for at least one cloud provider (AWS/Azure/GCP)
 
-🛠️ Project Structure
-Plaintext
-
-├── client/              # React frontend
-│   ├── src/components/  # Reusable UI (Cloud Cards, Graphs)
-│   └── src/context/     # Global state for cloud data
-├── server/              # Node.js backend
-│   ├── routes/          # API endpoints (e.g., /api/aws, /api/gcp)
-│   ├── services/        # Logic for Cloud SDK integrations
-│   └── utils/           # Data normalization helpers
-└── docker-compose.yml   # Local development setup
-🚦 Getting Started
-Prerequisites
-Node.js (v18+)
-
-Cloud Provider Credentials (AWS CLI, Azure CLI, or GCP Service Account keys)
-
-Installation
-Clone the repository:
-
+2. Installation
 Bash
 
-git clone https://github.com/Divyaa06-code/Project.git
+# Clone the repository
+git clone [https://github.com/Divyaa06-code/Project.git](https://github.com/Divyaa06-code/Project.git)
 cd Project
-Setup Backend:
 
-Bash
-
+# Install Backend Dependencies
 cd server
 npm install
-# Add your cloud credentials to a .env file
-npm start
-Setup Frontend:
 
-Bash
-
+# Install Frontend Dependencies
 cd ../client
 npm install
-npm start
-📈 Roadmap
-[ ] Support for Kubernetes cluster monitoring.
+3. Environment Setup
+Create a .env file in the server directory:
 
-[ ] Slack/Microsoft Teams notifications for failed deployments.
+Code snippet
 
-[ ] Cost estimation module for multi-cloud budget tracking.
-
-How to update your GitHub with this:
-Open your README.md file in your code editor.
-
-Delete the old text and paste the content above.
-
-Run these commands in your terminal:
-
+PORT=5000
+AWS_ACCESS_KEY_ID=your_key
+AWS_SECRET_ACCESS_KEY=your_secret
+AZURE_TENANT_ID=your_id
+GCP_PROJECT_ID=your_project_id
+4. Running the Project
 Bash
 
-git add README.md
-git commit -m "docs: elaborate README with architecture and features"
-git push origin main
+# Start Backend (from /server)
+npm start
+
+# Start Frontend (from /client)
+npm start
+📈 Roadmap
+[ ] Implement OAuth2 for user login.
+
+[ ] Add support for Kubernetes (K8s) cluster monitoring.
+
+[ ] Integrated Cost-Tracker to monitor spending across clouds.
+
+[ ] One-click rollback functionality for failed deployments.
